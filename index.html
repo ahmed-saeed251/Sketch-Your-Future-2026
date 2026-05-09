@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="theme-color" content="#0C2340">
+  <meta name="description" content="Sketch Your Future — Alexandria University Faculty Orientation Event">
+  <title>Sketch Your Future — Alexandria University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:       #0C2340;
+      --navy-l:     #153354;
+      --gold:       #EAA731;
+      --gold-l:     #fef3d8;
+      --blue:       #185FA5;
+      --blue-l:     #E6F1FB;
+      --green:      #1D9E75;
+      --green-l:    #E1F5EE;
+      --red:        #E24B4A;
+      --red-l:      #FCEBEB;
+      --purple:     #7C5CBF;
+      --purple-l:   #F0EAFF;
+      --amber:      #BA7517;
+      --amber-l:    #FAEEDA;
+      --surface:    #F5F6FA;
+      --white:      #FFFFFF;
+      --border:     rgba(0,0,0,0.08);
+      --border-md:  rgba(0,0,0,0.13);
+      --text-1:     #111827;
+      --text-2:     #4B5563;
+      --text-3:     #9CA3AF;
+      --shadow-s:   0 1px 4px rgba(0,0,0,0.07);
+      --shadow-m:   0 4px 14px rgba(0,0,0,0.09);
+      --shadow-l:   0 16px 40px rgba(0,0,0,0.13);
+      --r-s:  8px;
+      --r-m: 12px;
+      --r-l: 16px;
+      --r-xl:24px;
+      --ease: 0.2s cubic-bezier(0.4,0,0.2,1);
+      --font-b: 'Plus Jakarta Sans', sans-serif;
+      --font-d: 'Cairo', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-b); color: var(--text-1); background: var(--surface); line-height: 1.6; padding-bottom: 72px; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── ANNOUNCEMENT BANNER ── */
+    #ann-banner {
+      background: var(--gold);
+      padding: 10px 16px;
+      display: flex; align-items: flex-start; gap: 10px;
+      position: sticky; top: 0; z-index: 110;
+    }
+    #ann-banner.high { background: var(--red); }
+    #ann-banner.high .ann-msg { color: #fff; }
+    #ann-banner.high .ann-x  { color: #fff; }
+    #ann-banner.gone { display: none; }
+    .ann-msg { font-size: 13px; font-weight: 500; color: var(--navy); flex: 1; line-height: 1.5; }
+    .ann-x   { font-size: 22px; color: var(--navy); opacity: .6; flex-shrink: 0; line-height: 1; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      position: sticky; top: 44px; z-index: 100;
+      box-shadow: 0 2px 12px rgba(12,35,64,.35);
+    }
+    .h-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; height: 58px; padding: 0 20px; gap: 12px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-weight: 700; font-size: 13px; color: var(--navy);
+    }
+    .logo-name { font-size: 14px; font-weight: 600; color: #fff; line-height: 1.2; display: block; }
+    .logo-sub  { font-size: 10px; color: rgba(255,255,255,.5); display: block; }
+    .d-nav { display: none; list-style: none; gap: 4px; margin-left: auto; }
+    .d-nav a {
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.65);
+      padding: 6px 12px; border-radius: var(--r-s); transition: all var(--ease); display: block;
+    }
+    .d-nav a:hover, .d-nav a.on { color: #fff; background: rgba(255,255,255,.1); }
+    @media(min-width:768px){ .d-nav { display: flex; } .b-nav { display: none !important; } }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(155deg, #0C2340 0%, #1a3a6a 100%);
+      padding: 44px 20px 52px; text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(234,167,49,.18); border: 1px solid rgba(234,167,49,.38);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 12px; font-weight: 500; color: var(--gold); margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: var(--font-d); font-size: clamp(28px,8vw,46px); font-weight: 700;
+      color: #fff; line-height: 1.15; margin-bottom: 8px;
+    }
+    .hero-tag { font-size: 15px; color: rgba(255,255,255,.62); margin-bottom: 26px; line-height: 1.5; }
+    .hero-meta {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px;
+    }
+    .hero-meta span { font-size: 12px; color: rgba(255,255,255,.68); display: flex; align-items: center; gap: 5px; }
+    .hero-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .btn-p {
+      background: var(--gold); color: var(--navy); padding: 12px 22px;
+      border-radius: 10px; font-size: 14px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px; transition: all var(--ease);
+    }
+    .btn-p:hover { background: #d4961f; transform: translateY(-1px); }
+    .btn-o {
+      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.32);
+      padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 6px; transition: all var(--ease);
+    }
+    .btn-o:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.07); }
+
+    /* ── SECTIONS ── */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 34px 20px; }
+    .sec-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
+    .sec-title { font-family: var(--font-d); font-size: 21px; font-weight: 700; color: var(--navy); }
+    .sec-sub   { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+    .divider   { height: 1px; background: var(--border); max-width: 960px; margin: 0 auto; }
+
+    /* ── TAB ROWS ── */
+    .tab-row {
+      display: flex; background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-m); padding: 4px; gap: 4px; margin-bottom: 22px;
+    }
+    .tab-btn {
+      flex: 1; padding: 9px 6px; border-radius: var(--r-s);
+      font-size: 13px; font-weight: 500; color: var(--text-2);
+      transition: all var(--ease); text-align: center;
+    }
+    .tab-btn.on { background: var(--navy); color: #fff; }
+
+    /* ── AGENDA ── */
+    .day-meta {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 14px; font-size: 13px; color: var(--text-2);
+    }
+    .day-meta span { display: flex; align-items: center; gap: 4px; }
+    .parallel-note {
+      background: #fef9ec; border: 1px solid #f6d860; border-radius: var(--r-s);
+      padding: 10px 14px; font-size: 12px; color: #8a6a00; font-weight: 500;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 6px;
+    }
+    .timeline { display: flex; flex-direction: column; gap: 10px; }
+    .tl-item { display: flex; gap: 12px; }
+    .t-col { width: 52px; flex-shrink: 0; padding-top: 10px; text-align: right; }
+    .t-s { font-size: 12px; font-weight: 600; color: var(--navy); display: block; }
+    .t-e { font-size: 11px; color: var(--text-3); display: block; }
+    .tl-conn {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 14px; flex-shrink: 0; width: 18px;
+    }
+    .tl-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .tl-line { width: 2px; flex: 1; background: var(--border-md); margin-top: 4px; min-height: 16px; }
+    .s-card {
+      flex: 1; background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-m); border-left: 3px solid transparent;
+      padding: 12px 14px; box-shadow: var(--shadow-s); transition: box-shadow var(--ease); min-width: 0;
+    }
+    .s-card:hover { box-shadow: var(--shadow-m); }
+    .s-card.brk { background: var(--surface); box-shadow: none; opacity: .72; }
+    .s-badge {
+      display: inline-flex; align-items: center;
+      font-size: 10px; font-weight: 500; padding: 2px 8px;
+      border-radius: 20px; margin-bottom: 5px;
+    }
+    .s-title { font-size: 14px; font-weight: 600; color: var(--text-1); margin-bottom: 6px; line-height: 1.4; }
+    .s-meta  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .s-meta span { font-size: 12px; color: var(--text-2); display: flex; align-items: center; gap: 4px; }
+    .s-spk   { color: var(--blue) !important; font-weight: 500 !important; }
+    .s-tags  { margin-top: 8px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .s-tag   { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: #f3f4f6; color: var(--text-2); }
+
+    /* ── FACULTY GRID ── */
+    .srch-wrap { position: relative; margin-bottom: 14px; }
+    .srch-input {
+      width: 100%; padding: 11px 16px 11px 42px; border: 1.5px solid var(--border-md);
+      border-radius: 10px; font-size: 14px; font-family: var(--font-b);
+      background: var(--white); color: var(--text-1); transition: border-color var(--ease);
+    }
+    .srch-input:focus { outline: none; border-color: var(--blue); }
+    .srch-ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 15px; }
+    .chips {
+      display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px;
+      margin-bottom: 20px; scrollbar-width: none;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip {
+      white-space: nowrap; padding: 7px 14px; border-radius: 20px;
+      border: 1.5px solid var(--border-md); background: var(--white);
+      font-size: 13px; font-weight: 500; color: var(--text-2); cursor: pointer;
+      transition: all var(--ease); flex-shrink: 0;
+    }
+    .chip.on  { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .chip:hover:not(.on) { background: var(--surface); border-color: var(--navy); }
+    .fac-grid {
+      display: grid; grid-template-columns: 1fr; gap: 12px;
+    }
+    @media(min-width:580px){ .fac-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(min-width:860px){ .fac-grid { grid-template-columns: repeat(3,1fr); } }
+    .fac-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-l);
+      border-left: 4px solid transparent; padding: 16px; cursor: pointer;
+      transition: all var(--ease); box-shadow: var(--shadow-s);
+    }
+    .fac-card:hover { box-shadow: var(--shadow-m); transform: translateY(-2px); }
+    .fac-card.gone { display: none; }
+    .fc-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .fc-ico { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .fc-name { font-size: 15px; font-weight: 600; color: var(--text-1); line-height: 1.3; margin-bottom: 3px; }
+    .fc-cat  { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+    .fc-desc { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .fc-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .fc-badges { display: flex; gap: 5px; flex-wrap: wrap; }
+    .fc-badge { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 6px; }
+    .fc-cta   { font-size: 13px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 3px; }
+    .empty-st { text-align: center; padding: 48px 20px; color: var(--text-2); }
+    .empty-st .ico { font-size: 42px; margin-bottom: 12px; }
+
+    /* ── INFO SECTION ── */
+    .info-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media(min-width:580px){ .info-grid { grid-template-columns: repeat(2,1fr); } }
+    .info-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-l); padding: 18px; box-shadow: var(--shadow-s); }
+    .ic-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .ic-row   { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+    .ic-lbl   { color: var(--text-3); min-width: 55px; flex-shrink: 0; }
+    .ic-val   { color: var(--text-1); font-weight: 500; }
+    .hall-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .hall-row:last-child { border-bottom: none; }
+    .hr-name  { font-weight: 500; color: var(--text-1); }
+    .hr-fl    { color: var(--text-3); }
+
+    /* ── OVERLAY + PANEL ── */
+    #overlay {
+      position: fixed; inset: 0; background: rgba(12,35,64,.52);
+      z-index: 200; opacity: 0; pointer-events: none;
+      transition: opacity .3s ease; backdrop-filter: blur(3px);
+    }
+    #overlay.on { opacity: 1; pointer-events: all; }
+    #panel {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 93vh; background: var(--white);
+      border-radius: 22px 22px 0 0; z-index: 201;
+      transform: translateY(100%); transition: transform .35s cubic-bezier(.4,0,.2,1);
+      display: flex; flex-direction: column; overflow: hidden;
+      max-width: 700px; margin: 0 auto;
+    }
+    #panel.on { transform: translateY(0); }
+    .p-drag  { width: 40px; height: 4px; background: #ddd; border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
+    .p-head  { padding: 16px 20px 14px; background: var(--navy); flex-shrink: 0; }
+    .p-top   { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+    .p-emoji { font-size: 34px; margin-bottom: 7px; display: block; }
+    .p-name  { font-family: var(--font-d); font-size: 21px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .p-ar    { font-size: 13px; color: rgba(255,255,255,.52); margin-bottom: 10px; }
+    .p-close { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.13); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; cursor: pointer; flex-shrink: 0; }
+    .p-ibadges { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+    .p-ibadge  { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.88); font-weight: 500; }
+    .p-desc  { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.55; }
+    .p-tabs  { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; flex-shrink: 0; }
+    .p-tabs::-webkit-scrollbar { display: none; }
+    .p-tab   { padding: 12px 20px; font-size: 13px; font-weight: 500; color: var(--text-2); white-space: nowrap; border-bottom: 2px solid transparent; transition: all var(--ease); cursor: pointer; }
+    .p-tab.on{ color: var(--navy); border-bottom-color: var(--navy); background: var(--white); }
+    .p-body  { flex: 1; overflow-y: auto; padding: 20px; padding-bottom: 44px; -webkit-overflow-scrolling: touch; }
+    .p-sec   { display: none; }
+    .p-sec.on{ display: block; }
+
+    /* ── OVERVIEW ── */
+    .ov-box    { border-radius: var(--r-m); padding: 16px; margin-bottom: 18px; }
+    .ov-title  { font-size: 14px; font-weight: 600; margin-bottom: 7px; }
+    .ov-txt    { font-size: 13px; color: #374151; line-height: 1.7; }
+    .ov-why    { font-size: 13px; font-weight: 600; color: var(--text-1); margin-bottom: 10px; }
+    .ov-list   { display: flex; flex-direction: column; gap: 9px; }
+    .ov-item   { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: #374151; }
+    .ov-check  { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── MAJORS ── */
+    .maj-card   { background: var(--surface); border-radius: var(--r-m); padding: 14px; margin-bottom: 10px; }
+    .maj-name   { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .maj-desc   { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-bottom: 10px; }
+    .car-lbl    { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .car-chips  { display: flex; flex-wrap: wrap; gap: 5px; }
+    .car-chip   { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--white); border: 1px solid var(--border-md); color: var(--text-2); }
+
+    /* ── SPEAKERS ── */
+    .spk-card   { background: var(--surface); border-radius: var(--r-m); padding: 14px; margin-bottom: 14px; }
+    .spk-top    { display: flex; gap: 12px; margin-bottom: 10px; }
+    .spk-av     { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; flex-shrink: 0; }
+    .spk-name   { font-size: 15px; font-weight: 600; color: var(--text-1); margin-bottom: 2px; }
+    .spk-title  { font-size: 12px; color: var(--text-2); line-height: 1.4; margin-bottom: 5px; }
+    .spk-spec   { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; color: var(--blue); background: var(--blue-l); padding: 3px 9px; border-radius: 20px; }
+    .spk-bio    { font-size: 13px; color: var(--text-2); line-height: 1.6; margin-bottom: 12px; margin-top: 8px; }
+    .ctc-btns   { display: flex; gap: 7px; flex-wrap: wrap; }
+    .ctc-btn    {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 500; padding: 8px 13px;
+      border-radius: 8px; border: 1px solid var(--border-md);
+      transition: all var(--ease); background: var(--white); color: var(--text-1);
+    }
+    .ctc-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-s); }
+    .ctc-wa  { background: #e8f8f0; border-color: #a3d9bc; color: #0e6b40; }
+    .ctc-em  { background: var(--blue-l); border-color: #aec6ec; color: #1a4d8f; }
+    .ctc-li  { background: #e8f0f8; border-color: #a0c0e0; color: #00345e; }
+    .ctc-ph  { background: #f0f0ff; border-color: #c0c0f0; color: #3d3daa; }
+    .no-spk  { text-align: center; padding: 32px 16px; color: var(--text-2); font-size: 13px; }
+
+    /* ── RESOURCES ── */
+    .r-label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .5px; margin: 16px 0 8px; }
+    .r-label:first-child { margin-top: 0; }
+    .res-item {
+      display: flex; align-items: center; gap: 12px; padding: 13px;
+      background: var(--surface); border-radius: var(--r-m); margin-bottom: 8px;
+      transition: all var(--ease); cursor: pointer;
+    }
+    .res-item:hover { background: #eaecf2; transform: translateX(2px); }
+    .r-ico   { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .r-info  { flex: 1; min-width: 0; }
+    .r-name  { font-size: 13px; font-weight: 600; color: var(--text-1); margin-bottom: 2px; }
+    .r-sub   { font-size: 11px; color: var(--text-2); }
+    .r-act   { font-size: 12px; font-weight: 600; flex-shrink: 0; white-space: nowrap; }
+    .yt-item {
+      display: flex; gap: 12px; align-items: center; padding: 12px;
+      background: #fff5f5; border: 1px solid #fcc; border-radius: var(--r-m);
+      margin-bottom: 8px; transition: all var(--ease); cursor: pointer;
+    }
+    .yt-item:hover { background: #ffecec; }
+    .yt-thumb { width: 74px; height: 50px; background: #fca5a5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .yt-btn   { width: 28px; height: 28px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .yt-tri   { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 11px solid #fff; margin-left: 2px; }
+    .yt-title { font-size: 13px; font-weight: 600; color: #c0392b; margin-bottom: 3px; line-height: 1.3; }
+    .yt-meta  { font-size: 11px; color: #a93226; }
+
+    /* ── BOTTOM NAV ── */
+    .b-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 64px; background: var(--white); border-top: 1px solid var(--border);
+      display: flex; z-index: 97; box-shadow: 0 -3px 14px rgba(0,0,0,.06);
+    }
+    .b-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 2px; font-size: 10px; font-weight: 500;
+      color: var(--text-3); transition: color var(--ease); cursor: pointer;
+    }
+    .b-item.on { color: var(--navy); }
+    .b-ico { font-size: 20px; line-height: 1; }
+
+    /* ── FADE-IN ── */
+    .fi { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+    .fi.v { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ ANNOUNCEMENT ══════════════════ -->
+<div id="ann-banner">
+  <span style="font-size:15px;flex-shrink:0">🎙️</span>
+  <span class="ann-msg" id="ann-msg">Opening ceremony starts at 9:00 AM in Main Hall — all attendees please head there now.</span>
+  <button class="ann-x" onclick="dismissBanner()" aria-label="Dismiss">×</button>
+</div>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <div class="h-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark">SYF</div>
+      <div>
+        <span class="logo-name">Sketch Your Future</span>
+        <span class="logo-sub">Alexandria University · Aug 2025</span>
+      </div>
+    </a>
+    <ul class="d-nav" id="dnav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#faculties">Faculties</a></li>
+      <li><a href="#info">Info</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="home" class="hero">
+  <div class="hero-pill">🎓 Alexandria University · Class of 2025</div>
+  <h1>ارسم مستقبلك</h1>
+  <p class="hero-tag">Explore faculties, discover your major, and plan your academic future</p>
+  <div class="hero-meta">
+    <span>📅 Aug 1–3, 2025</span>
+    <span>📍 Bibliotheca Alexandrina</span>
+    <span>👥 2,000+ Attendees</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#faculties" class="btn-p">🎓 Explore Faculties</a>
+    <a href="#agenda"    class="btn-o">📅 View Agenda</a>
+  </div>
+</section>
+
+<!-- ══════════════════ AGENDA ══════════════════ -->
+<section id="agenda">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div>
+        <div class="sec-title">📅 Event Agenda</div>
+        <div class="sec-sub">All sessions across 3 days · Tap any session for details</div>
+      </div>
+    </div>
+    <div class="tab-row fi">
+      <button class="tab-btn on" onclick="showDay(1,this)">Day 1 · Aug 1</button>
+      <button class="tab-btn"    onclick="showDay(2,this)">Day 2 · Aug 2</button>
+      <button class="tab-btn"    onclick="showDay(3,this)">Day 3 · Aug 3</button>
+    </div>
+    <div id="agenda-out"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ FACULTIES ══════════════════ -->
+<section id="faculties">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div>
+        <div class="sec-title">🎓 Faculty Explorer</div>
+        <div class="sec-sub">8 faculties · Tap any card to see speakers, resources &amp; more</div>
+      </div>
+    </div>
+    <div class="srch-wrap fi">
+      <span class="srch-ico">🔍</span>
+      <input type="text" class="srch-input" id="srch" placeholder="Search faculties, majors, careers..." oninput="doFilter()">
+    </div>
+    <div class="chips fi" id="chips-row"></div>
+    <div class="fac-grid" id="fac-grid"></div>
+    <div class="empty-st" id="fac-empty" style="display:none">
+      <div class="ico">🔍</div>
+      <p>No faculties match your search.<br>Try a different keyword.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ INFO ══════════════════ -->
+<section id="info">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div>
+        <div class="sec-title">ℹ️ Event Information</div>
+        <div class="sec-sub">Venue, halls &amp; contact details</div>
+      </div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card fi">
+        <div class="ic-title">📍 Venue Details</div>
+        <div class="ic-row"><span class="ic-lbl">Venue</span><span class="ic-val">Bibliotheca Alexandrina — Conference Center</span></div>
+        <div class="ic-row"><span class="ic-lbl">Dates</span><span class="ic-val">August 1–3, 2025</span></div>
+        <div class="ic-row"><span class="ic-lbl">Email</span><span class="ic-val">sketchyourfuture@alexu.edu.eg</span></div>
+        <div class="ic-row"><span class="ic-lbl">Phone</span><span class="ic-val">+20 3 000 0000</span></div>
+      </div>
+      <div class="info-card fi">
+        <div class="ic-title">🏛️ Hall Directory</div>
+        <div class="hall-row"><span class="hr-name">Main Hall</span><span class="hr-fl">Ground Fl · 500 seats</span></div>
+        <div class="hall-row"><span class="hr-name">Hall A</span><span class="hr-fl">Ground Fl · 200 seats</span></div>
+        <div class="hall-row"><span class="hr-name">Hall B</span><span class="hr-fl">Ground Fl · 200 seats</span></div>
+        <div class="hall-row"><span class="hr-name">Hall C</span><span class="hr-fl">1st Floor · 150 seats</span></div>
+        <div class="hall-row"><span class="hr-name">Hall D</span><span class="hr-fl">2nd Floor · 100 seats</span></div>
+        <div class="hall-row"><span class="hr-name">Exhibition Area</span><span class="hr-fl">Ground Fl · Open</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FACULTY PANEL ══════════════════ -->
+<div id="overlay" onclick="closePanel()"></div>
+<div id="panel" role="dialog" aria-modal="true" aria-label="Faculty details">
+  <div class="p-drag"></div>
+  <div class="p-head">
+    <div class="p-top">
+      <div>
+        <span class="p-emoji" id="p-emoji"></span>
+        <div class="p-name" id="p-name"></div>
+        <div class="p-ar"   id="p-ar"></div>
+        <div class="p-ibadges" id="p-badges"></div>
+      </div>
+      <button class="p-close" onclick="closePanel()" aria-label="Close panel">×</button>
+    </div>
+    <p class="p-desc" id="p-desc"></p>
+  </div>
+  <div class="p-tabs">
+    <div class="p-tab on" onclick="switchTab('ov',this)">Overview</div>
+    <div class="p-tab"    onclick="switchTab('maj',this)">Majors</div>
+    <div class="p-tab"    onclick="switchTab('spk',this)">Speakers</div>
+    <div class="p-tab"    onclick="switchTab('res',this)">Resources</div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec on" id="t-ov"></div>
+    <div class="p-sec"    id="t-maj"></div>
+    <div class="p-sec"    id="t-spk"></div>
+    <div class="p-sec"    id="t-res"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ BOTTOM NAV ══════════════════ -->
+<nav class="b-nav" aria-label="Main navigation">
+  <a href="#home"      class="b-item on" data-s="home">     <span class="b-ico">🏠</span>Home</a>
+  <a href="#agenda"    class="b-item"    data-s="agenda">    <span class="b-ico">📅</span>Agenda</a>
+  <a href="#faculties" class="b-item"    data-s="faculties"> <span class="b-ico">🎓</span>Faculties</a>
+  <a href="#info"      class="b-item"    data-s="info">      <span class="b-ico">ℹ️</span>Info</a>
+</nav>
+
+<script>
+// ════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════
+const SS = {
+  'Opening':              {c:'#0C2340', bg:'#e8ecf4', dot:'#0C2340'},
+  'Closing':              {c:'#0C2340', bg:'#e8ecf4', dot:'#0C2340'},
+  'Faculty Presentation': {c:'#0C447C', bg:'#E6F1FB', dot:'#185FA5'},
+  'Workshop':             {c:'#412402', bg:'#FAEEDA', dot:'#EAA731'},
+  'Soft Skills':          {c:'#085041', bg:'#E1F5EE', dot:'#1D9E75'},
+  'Networking':           {c:'#26215C', bg:'#F0EAFF', dot:'#7C5CBF'},
+  'Break':                {c:'#5a6378', bg:'#F5F6FA', dot:'#d1d5db'}
+};
+
+const SESSIONS = [
+  {day:1,s:'09:00',e:'10:00',dur:'1 hr',   title:'Opening Ceremony — Welcome to Your Future',                     type:'Opening',              hall:'Main Hall',     spk:['Prof. Ahmed Hassan'],              tags:['Opening','Keynote']},
+  {day:1,s:'10:15',e:'11:15',dur:'1 hr',   title:'Faculty of Medicine — Your Path to Becoming a Doctor',         type:'Faculty Presentation', hall:'Hall A',        spk:['Dr. Mona El-Sayed'],               tags:['Medicine','Career']},
+  {day:1,s:'10:15',e:'11:15',dur:'1 hr',   title:'Faculty of Engineering — Build the Future',                    type:'Faculty Presentation', hall:'Hall B',        spk:['Prof. Ahmed Hassan'],              tags:['Engineering','Career']},
+  {day:1,s:'11:30',e:'12:15',dur:'45 min', title:'How I Got My First Tech Job — Alumni Talk',                    type:'Soft Skills',          hall:'Hall C',        spk:['Eng. Khaled Nasser'],              tags:['Career','Alumni','Tech']},
+  {day:1,s:'12:30',e:'13:15',dur:'45 min', title:'Faculty of Pharmacy — Beyond the Dispensing Counter',          type:'Faculty Presentation', hall:'Hall A',        spk:['Dr. Sara Ibrahim'],                tags:['Pharmacy','Healthcare']},
+  {day:1,s:'13:15',e:'14:00',dur:'45 min', title:'Lunch Break',                                                  type:'Break',                hall:'Cafeteria',     spk:[],                                  tags:[]},
+  {day:1,s:'14:00',e:'14:45',dur:'45 min', title:"Faculty of Commerce — Business, Finance & Egypt's Economy",   type:'Faculty Presentation', hall:'Hall B',        spk:['Dr. Omar Farid'],                  tags:['Commerce','Finance']},
+  {day:1,s:'15:00',e:'16:00',dur:'1 hr',   title:'Workshop — How to Choose Your Faculty',                        type:'Workshop',             hall:'Hall D',        spk:[],                                  tags:['Workshop','Decision Making']},
+  {day:2,s:'09:00',e:'09:30',dur:'30 min', title:'Day 2 Opening — Recap & What to Expect Today',                 type:'Opening',              hall:'Main Hall',     spk:['Prof. Ahmed Hassan'],              tags:['Opening','Day 2']},
+  {day:2,s:'09:45',e:'10:45',dur:'1 hr',   title:'AI in Egypt — Opportunities & How to Get Started',             type:'Soft Skills',          hall:'Hall A',        spk:['Dr. Layla Mansour'],               tags:['AI','Technology','Career']},
+  {day:2,s:'11:00',e:'12:00',dur:'1 hr',   title:'Faculty of Computers & Data Science — Full Program Overview',  type:'Faculty Presentation', hall:'Hall A',        spk:['Eng. Khaled Nasser','Dr. Layla Mansour'], tags:['Technology','AI','CS']},
+  {day:2,s:'12:15',e:'13:00',dur:'45 min', title:'Build a Portfolio That Gets You Hired',                        type:'Workshop',             hall:'Hall C',        spk:['Eng. Khaled Nasser'],              tags:['Workshop','Career','Portfolio']},
+  {day:2,s:'13:00',e:'13:45',dur:'45 min', title:'Lunch Break',                                                  type:'Break',                hall:'Cafeteria',     spk:[],                                  tags:[]},
+  {day:2,s:'14:00',e:'15:30',dur:'1.5 hrs',title:'Faculty of Science & Arts — Joint Presentation',              type:'Faculty Presentation', hall:'Hall B',        spk:[],                                  tags:['Science','Arts']},
+  {day:3,s:'10:00',e:'11:30',dur:'1.5 hrs',title:'Open Networking — Meet Faculty Representatives',              type:'Networking',           hall:'Exhibition Area',spk:[],                                  tags:['Networking','Q&A','Open']},
+  {day:3,s:'12:00',e:'12:45',dur:'45 min', title:'University Life — What Nobody Tells You',                     type:'Soft Skills',          hall:'Hall A',        spk:['Eng. Khaled Nasser'],              tags:['Soft Skills','Student Life']},
+  {day:3,s:'13:00',e:'14:00',dur:'1 hr',   title:'Closing Ceremony — Your Future Starts Now',                   type:'Closing',              hall:'Main Hall',     spk:['Prof. Ahmed Hassan'],              tags:['Closing','Ceremony']}
+];
+
+const SPEAKERS = {
+  'fac-eng': [{name:'Prof. Ahmed Hassan',ini:'AH',title:'Dean, Faculty of Engineering',spec:'Power Systems & Smart Grids',bio:'Prof. Ahmed Hassan has led the Faculty of Engineering for over 10 years, overseeing partnerships with Siemens, Schneider Electric, and the Egyptian Electricity Holding Company. His research focuses on smart grid systems and power distribution.',wa:'201000000001',em:'a.hassan@eng.alexu.edu.eg',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0001',ac:'#185FA5',abg:'#E6F1FB'}],
+  'fac-med': [{name:'Dr. Mona El-Sayed',ini:'ME',title:'Associate Professor, Faculty of Medicine',spec:'Cardiology & Medical Education',bio:'Cardiologist and academic at Alexandria University Medical School. Passionate about mentoring medical students and advocates for early career planning in medicine.',wa:'201000000002',em:'m.elsayed@medicine.alexu.edu.eg',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0002',ac:'#E24B4A',abg:'#FCEBEB'}],
+  'fac-pharmacy':[{name:'Dr. Sara Ibrahim',ini:'SI',title:'Head of Pharmacy Department',spec:'Clinical Pharmacy & Industry',bio:'Dr. Sara Ibrahim leads the clinical pharmacy department and has built strong industry partnerships with major Egyptian pharmaceutical companies, bridging academia and the industry.',wa:'201000000003',em:'s.ibrahim@pharmacy.alexu.edu.eg',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0003',ac:'#1D9E75',abg:'#E1F5EE'}],
+  'fac-commerce':[{name:'Dr. Omar Farid',ini:'OF',title:'Economics Professor, Faculty of Commerce',spec:'Economics & Financial Planning',bio:"Specializes in macroeconomics and Egypt's financial sector development. Advises students on careers in finance, consulting, and entrepreneurship. Frequent media commentator on Egyptian economic policy.",wa:'201000000004',em:'o.farid@commerce.alexu.edu.eg',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0004',ac:'#EAA731',abg:'#FAEEDA'}],
+  'fac-computers':[{name:'Eng. Khaled Nasser',ini:'KN',title:'Senior Software Engineer & Alumni',spec:'Software Engineering & Career Dev',bio:'Graduated from the Faculty of Computers and Data Science in 2020. Now a Senior Software Engineer at a leading Cairo fintech company. Shares the real journey from student portfolio to industry job.',wa:'201000000005',em:'khaled.nasser@example.com',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0005',ac:'#185FA5',abg:'#E6F1FB'},{name:'Dr. Layla Mansour',ini:'LM',title:'AI Research Lead, Faculty of Computers',spec:'Artificial Intelligence & Computer Vision',bio:'Leads the AI research group at the Faculty of Computers. Her work includes computer vision applications for Egyptian cultural heritage digitization and deep learning for Arabic NLP.',wa:'201000000006',em:'l.mansour@cds.alexu.edu.eg',li:'https://linkedin.com/in/placeholder',ph:'+20 100 000 0006',ac:'#7C5CBF',abg:'#F0EAFF'}],
+  'fac-science':[],
+  'fac-law':[],
+  'fac-arts':[]
+};
+
+const FACULTIES = [
+  {id:'fac-eng',     emoji:'⚙️', name:'Faculty of Engineering',         ar:'كلية الهندسة',                     cat:'Engineering', col:'#185FA5', bl:'#E6F1FB', tc:'#0C447C', yrs:'5 Years', lang:'English',        sys:'Credit Hours', sc:'95%+',  sd:"One of Egypt's most prestigious engineering schools training future engineers across 10+ disciplines.", fd:"Alexandria University's Faculty of Engineering is a leading institution in technical education and applied research, established over 70 years ago. It offers undergraduate and postgraduate programs across civil, electrical, mechanical, computer, and architectural engineering, with strong links to Egypt's energy and infrastructure sectors.", mj:[{n:'Electrical Engineering',d:'Power systems, electronics, communications, and control engineering.',c:['Power Systems Engineer','Electronics Designer','Telecom Engineer','Control Systems Engineer']},{n:'Computer Engineering',d:'Hardware, software systems, embedded systems, and computer architecture.',c:['Software Engineer','Embedded Developer','Hardware Designer']},{n:'Civil Engineering',d:'Structural design, construction management, and infrastructure development.',c:['Structural Engineer','Construction Manager','Urban Planner']},{n:'Mechanical Engineering',d:'Thermodynamics, manufacturing, robotics, and energy systems.',c:['Mechanical Designer','Manufacturing Engineer','Energy Consultant']},{n:'Architectural Engineering',d:'Building design, urban planning, and sustainable architecture.',c:['Architect','Urban Designer','Project Manager']}], web:'https://eng.alexu.edu.eg', fb:'https://facebook.com/alexuengineering', ig:'#', br:'#', by:'#', yt:[{t:'Engineering Faculty Presentation — Sketch Your Future 2024',m:'YouTube · 32 min · Prof. Ahmed Hassan',u:'https://youtube.com'},{t:'Engineering Student Q&A — Event 2023',m:'YouTube · 47 min · Panel of alumni',u:'https://youtube.com'}]},
+  {id:'fac-med',     emoji:'🏥', name:'Faculty of Medicine',            ar:'كلية الطب البشري',                 cat:'Medical',     col:'#E24B4A', bl:'#FCEBEB', tc:'#791F1F', yrs:'6 Years', lang:'English/Arabic', sys:'Semester',     sc:'98%+',  sd:"Training the next generation of physicians at one of Egypt's oldest and most respected medical schools.", fd:"The Faculty of Medicine has been a cornerstone of medical education in Egypt since 1942. The 6-year MBBCh program combines clinical training with theoretical foundations. Students rotate through Alexandria's major teaching hospitals, gaining hands-on experience across all medical specialties.", mj:[{n:'General Medicine (MBBCh)',d:'Comprehensive 6-year program covering all medical sciences and clinical practice.',c:['General Physician','Hospital Resident','Specialist Doctor','Medical Researcher']}], web:'https://medicine.alexu.edu.eg', fb:'https://facebook.com/alexumedicine', ig:'#', br:'#', by:'#', yt:[{t:'Medicine Faculty Presentation — Sketch Your Future 2024',m:'YouTube · 28 min · Dr. Mona El-Sayed',u:'https://youtube.com'},{t:'A Day in the Life of a Medical Student — 2023',m:'YouTube · 22 min · Student documentary',u:'https://youtube.com'}]},
+  {id:'fac-pharmacy',emoji:'💊', name:'Faculty of Pharmacy',            ar:'كلية الصيدلة',                     cat:'Pharmacy',    col:'#1D9E75', bl:'#E1F5EE', tc:'#085041', yrs:'5 Years', lang:'English',        sys:'Credit Hours', sc:'93%+',  sd:'Comprehensive pharmaceutical sciences education covering drug development, clinical practice, and research.', fd:"The Faculty of Pharmacy offers a 5-year program combining chemistry, biology, and clinical practice. Strong industry ties with Egypt's pharmaceutical sector and international research partnerships make graduates highly competitive.", mj:[{n:'Pharmaceutical Sciences',d:'Drug synthesis, formulation, pharmacology, and clinical pharmacy.',c:['Pharmacist','Drug Researcher','Clinical Pharmacist','QC Specialist']},{n:'Industrial Pharmacy',d:'Manufacturing, quality assurance, and pharmaceutical technology.',c:['Production Pharmacist','QA Specialist','Regulatory Affairs','R&D Scientist']}], web:'https://pharmacy.alexu.edu.eg', fb:'https://facebook.com/alexupharmacy', ig:'#', br:'#', by:'#', yt:[{t:'Pharmacy Faculty Overview — Sketch Your Future 2024',m:'YouTube · 25 min · Dr. Sara Ibrahim',u:'https://youtube.com'}]},
+  {id:'fac-commerce', emoji:'💼', name:'Faculty of Commerce',           ar:'كلية التجارة',                     cat:'Business',    col:'#EAA731', bl:'#FAEEDA', tc:'#412402', yrs:'4 Years', lang:'Arabic/English', sys:'Semester',     sc:'85%+',  sd:"Egypt's leading business and economics faculty producing finance, accounting, and management professionals.", fd:"The Faculty of Commerce is one of Alexandria University's largest faculties, offering programs in accounting, business administration, economics, statistics, and insurance. With strong ties to Egypt's banking and business sector, graduates are highly employable across finance, consulting, and entrepreneurship.", mj:[{n:'Accounting',d:'Financial and managerial accounting, auditing, and taxation.',c:['Accountant','Auditor','Tax Consultant','Financial Manager']},{n:'Business Administration',d:'Management, marketing, operations, and organizational behavior.',c:['Business Manager','Marketing Specialist','Operations Manager']},{n:'Economics',d:'Micro/macroeconomics, development economics, and economic policy.',c:['Economist','Policy Analyst','Financial Analyst']},{n:'Statistics',d:'Applied statistics, data analysis, and quantitative methods.',c:['Data Analyst','Statistician','Actuary']}], web:'https://commerce.alexu.edu.eg', fb:'https://facebook.com/alexucommerce', ig:'#', br:'#', by:'#', yt:[{t:'Commerce Faculty Presentation — Sketch Your Future 2024',m:'YouTube · 30 min · Dr. Omar Farid',u:'https://youtube.com'}]},
+  {id:'fac-computers',emoji:'💻',name:'Computers & Data Science',       ar:'كلية الحاسبات وعلوم البيانات',     cat:'Technology',  col:'#185FA5', bl:'#E6F1FB', tc:'#0C447C', yrs:'4 Years', lang:'English',        sys:'Credit Hours', sc:'92%+',  sd:"Newest and fastest-growing faculty — specializing in software engineering, AI, data science, and cybersecurity.", fd:"Alexandria University's response to Egypt's digital transformation goals. The faculty offers programs in computer science, AI, data science, cybersecurity, and information systems. With modern labs and strong industry partnerships, it is among the most in-demand faculties for high school graduates interested in technology.", mj:[{n:'Computer Science',d:'Algorithms, software engineering, programming languages, and systems.',c:['Software Engineer','Systems Developer','Backend Developer','Tech Lead']},{n:'Artificial Intelligence',d:'Machine learning, deep learning, computer vision, and NLP.',c:['AI Engineer','ML Engineer','Research Scientist','Data Scientist']},{n:'Data Science',d:'Data analysis, statistical modeling, data engineering, and visualization.',c:['Data Scientist','Data Analyst','BI Analyst','Data Engineer']},{n:'Cybersecurity',d:'Network security, ethical hacking, cryptography, and digital forensics.',c:['Security Engineer','Penetration Tester','SOC Analyst']},{n:'Information Systems',d:'Enterprise systems, databases, ERP, and business technology.',c:['Systems Analyst','ERP Consultant','IT Manager','Business Analyst']}], web:'https://cds.alexu.edu.eg', fb:'https://facebook.com/alexucds', ig:'#', br:'#', by:'#', yt:[{t:'Computers & Data Science — Full Overview 2024',m:'YouTube · 35 min · Eng. Khaled & Dr. Layla',u:'https://youtube.com'},{t:'AI & Future Careers Panel — Sketch Your Future 2023',m:'YouTube · 52 min · Faculty panel discussion',u:'https://youtube.com'}]},
+  {id:'fac-science',  emoji:'🔬', name:'Faculty of Science',            ar:'كلية العلوم',                      cat:'Science',     col:'#1D9E75', bl:'#E1F5EE', tc:'#085041', yrs:'4 Years', lang:'English/Arabic', sys:'Semester',     sc:'80%+',  sd:'Pure and applied sciences across mathematics, physics, chemistry, geology, and biology.', fd:'Research-focused faculty offering programs in mathematics, physics, chemistry, geology, and biology. Several research centers and a strong postgraduate program. The right choice for students passionate about discovery and applied research.', mj:[{n:'Mathematics',d:'Pure math, applied math, numerical analysis, and computational math.',c:['Mathematician','Data Scientist','Software Developer','Actuary']},{n:'Physics',d:'Classical and modern physics, optics, nuclear, and materials science.',c:['Physicist','Researcher','Medical Physicist']},{n:'Chemistry',d:'Organic, inorganic, physical, and industrial chemistry.',c:['Chemist','Researcher','QC Specialist','Pharmaceutical Chemist']},{n:'Geology',d:'Earth sciences, petroleum geology, and environmental science.',c:['Geologist','Petroleum Engineer','Environmental Consultant']}], web:'https://science.alexu.edu.eg', fb:'https://facebook.com/alexuscience', ig:'#', br:'#', by:'#', yt:[{t:'Faculty of Science Presentation — Sketch Your Future 2024',m:'YouTube · 27 min',u:'https://youtube.com'}]},
+  {id:'fac-law',      emoji:'⚖️', name:'Faculty of Law',                ar:'كلية الحقوق',                      cat:'Law',         col:'#0C2340', bl:'#e8ecf4', tc:'#0C2340', yrs:'4 Years', lang:'Arabic',         sys:'Semester',     sc:'82%+',  sd:'Comprehensive legal education covering civil, criminal, commercial, and international law.', fd:'One of the most established law schools in Egypt. The 4-year LLB program covers Egyptian law, Islamic law, comparative law, and international relations. The faculty maintains a strong mooting and legal practice culture.', mj:[{n:'Law (LLB)',d:'Civil law, criminal law, commercial law, administrative law, and international law.',c:['Lawyer','Judge','Legal Advisor','Notary Public','Legal Researcher']}], web:'https://law.alexu.edu.eg', fb:'https://facebook.com/alexulaw', ig:'#', br:'#', by:'#', yt:[{t:'Faculty of Law Overview — Sketch Your Future 2024',m:'YouTube · 20 min',u:'https://youtube.com'}]},
+  {id:'fac-arts',     emoji:'📚', name:'Faculty of Arts',               ar:'كلية الآداب',                      cat:'Arts',        col:'#7C5CBF', bl:'#F0EAFF', tc:'#26215C', yrs:'4 Years', lang:'Arabic/English/French', sys:'Semester', sc:'78%+', sd:'Languages, history, philosophy, archaeology, and social sciences.', fd:'One of the foundational faculties offering programs in Arabic, English, French, history, philosophy, sociology, and archaeology. Trains linguists, researchers, educators, and cultural professionals for careers across education, media, and diplomacy.', mj:[{n:'English Language & Literature',d:'Literature, linguistics, translation, and cultural studies.',c:['Translator','Editor','Teacher','Journalist']},{n:'Arabic Language & Literature',d:'Classical and modern Arabic, linguistics, rhetoric.',c:['Arabic Teacher','Media Writer','Academic']},{n:'History',d:'Egyptian, Arab, and world history, archival studies.',c:['Historian','Museum Curator','Archivist']},{n:'Archaeology',d:'Egyptology, Mediterranean archaeology, and heritage management.',c:['Archaeologist','Museum Specialist','Heritage Consultant']},{n:'Philosophy',d:'Logic, ethics, philosophy of science, and Islamic philosophy.',c:['Philosopher','Ethicist','Academic','Writer']}], web:'https://arts.alexu.edu.eg', fb:'https://facebook.com/alexuarts', ig:'#', br:'#', by:'#', yt:[{t:'Faculty of Arts Presentation — Sketch Your Future 2024',m:'YouTube · 24 min',u:'https://youtube.com'}]}
+];
+
+// ════════════════════════════════════════════════
+// AGENDA
+// ════════════════════════════════════════════════
+function renderAgenda(day) {
+  const list = SESSIONS.filter(s => s.day === day);
+  const starts = {};
+  list.forEach(s => { starts[s.s] = (starts[s.s]||0) + 1; });
+  const parallels = Object.keys(starts).filter(k => starts[k] > 1);
+  let out = '';
+  if (parallels.length) {
+    out += `<div class="parallel-note">⚡ Sessions run in parallel at ${parallels.join(', ')} — choose which hall to attend</div>`;
+  }
+  out += '<div class="timeline">';
+  list.forEach((s, i) => {
+    const st = SS[s.type] || SS['Break'];
+    const isBreak = s.type === 'Break';
+    const hasNext = i < list.length - 1;
+    out += `<div class="tl-item">
+      <div class="t-col"><span class="t-s">${s.s}</span><span class="t-e">${s.e}</span></div>
+      <div class="tl-conn">
+        <div class="tl-dot" style="background:${st.dot}"></div>
+        ${hasNext ? '<div class="tl-line"></div>' : ''}
+      </div>
+      <div class="s-card${isBreak?' brk':''}" style="border-left-color:${st.dot}">
+        <span class="s-badge" style="background:${st.bg};color:${st.c}">${s.type}</span>
+        <div class="s-title">${s.title}</div>
+        <div class="s-meta">
+          <span>🏛️ ${s.hall}</span>
+          <span>⏱ ${s.dur}</span>
+          ${s.spk.length ? `<span class="s-spk">👤 ${s.spk.join(', ')}</span>` : ''}
+        </div>
+        ${s.tags.length ? `<div class="s-tags">${s.tags.filter(t=>t!=='Break').map(t=>`<span class="s-tag">${t}</span>`).join('')}</div>` : ''}
+      </div>
+    </div>`;
+  });
+  out += '</div>';
+  document.getElementById('agenda-out').innerHTML =
+    `<div class="day-meta"><span>📋 ${list.length} sessions</span><span>🏛️ Main Hall, Halls A–D</span></div>` + out;
+}
+
+function showDay(d, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderAgenda(d);
+}
+
+// ════════════════════════════════════════════════
+// FACULTY GRID
+// ════════════════════════════════════════════════
+let activeCat = 'All';
+
+function renderGrid() {
+  const cats = ['All', ...new Set(FACULTIES.map(f => f.cat))];
+  document.getElementById('chips-row').innerHTML = cats.map((c,i) =>
+    `<button class="chip ${i===0?'on':''}" onclick="pickCat('${c}',this)">${c}</button>`
+  ).join('');
+  document.getElementById('fac-grid').innerHTML = FACULTIES.map(f =>
+    `<div class="fac-card fi" data-id="${f.id}" data-cat="${f.cat}"
+          data-kw="${[f.name,f.ar,f.sd,...f.mj.map(m=>m.n)].join(' ').toLowerCase()}"
+          onclick="openPanel('${f.id}')" style="border-left-color:${f.col}">
+      <div class="fc-top">
+        <div class="fc-ico" style="background:${f.bl}">${f.emoji}</div>
+        <div>
+          <div class="fc-name">${f.name}</div>
+          <span class="fc-cat" style="background:${f.bl};color:${f.tc}">${f.cat}</span>
+        </div>
+      </div>
+      <p class="fc-desc">${f.sd}</p>
+      <div class="fc-foot">
+        <div class="fc-badges">
+          <span class="fc-badge" style="background:${f.bl};color:${f.tc}">${f.yrs}</span>
+          <span class="fc-badge" style="background:${f.bl};color:${f.tc}">${f.lang}</span>
+        </div>
+        <span class="fc-cta">Explore →</span>
+      </div>
+    </div>`
+  ).join('');
+  setTimeout(() => {
+    document.querySelectorAll('#fac-grid .fi').forEach(el => {
+      if (io) io.observe(el); else el.classList.add('v');
+    });
+  }, 50);
+}
+
+function pickCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('#chips-row .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  doFilter();
+}
+
+function doFilter() {
+  const q = document.getElementById('srch').value.toLowerCase();
+  let any = false;
+  document.querySelectorAll('#fac-grid .fac-card').forEach(card => {
+    const mc = activeCat === 'All' || card.dataset.cat === activeCat;
+    const mq = !q || card.dataset.kw.includes(q);
+    const show = mc && mq;
+    card.classList.toggle('gone', !show);
+    if (show) any = true;
+  });
+  document.getElementById('fac-empty').style.display = any ? 'none' : 'block';
+}
+
+// ════════════════════════════════════════════════
+// FACULTY PANEL
+// ════════════════════════════════════════════════
+function openPanel(id) {
+  const f = FACULTIES.find(x => x.id === id);
+  if (!f) return;
+
+  document.getElementById('p-emoji').textContent = f.emoji;
+  document.getElementById('p-name').textContent  = f.name;
+  document.getElementById('p-ar').textContent    = f.ar;
+  document.getElementById('p-desc').textContent  = f.fd;
+  document.getElementById('p-badges').innerHTML  =
+    [f.yrs, f.lang, f.sys, 'Score: ' + f.sc].map(b =>
+      `<span class="p-ibadge">${b}</span>`).join('');
+
+  // Overview
+  document.getElementById('t-ov').innerHTML = `
+    <div class="ov-box" style="background:${f.bl}">
+      <div class="ov-title" style="color:${f.col}">About ${f.name}</div>
+      <div class="ov-txt">${f.fd}</div>
+    </div>
+    <div class="ov-why">Why choose ${f.name.split(' ').pop()}?</div>
+    <div class="ov-list">
+      ${[`${f.mj.length} specialization${f.mj.length>1?'s':''} available`,
+         `Study duration: ${f.yrs}`,`Teaching language: ${f.lang}`,
+         `Study system: ${f.sys}`,`Competitive score: ${f.sc}`]
+        .map(r=>`<div class="ov-item"><span class="ov-check" style="color:${f.col}">✓</span>${r}</div>`).join('')}
+    </div>`;
+
+  // Majors
+  document.getElementById('t-maj').innerHTML = f.mj.map(m => `
+    <div class="maj-card">
+      <div class="maj-name">${m.n}</div>
+      <div class="maj-desc">${m.d}</div>
+      <div class="car-lbl">Career Paths</div>
+      <div class="car-chips">${m.c.map(c=>`<span class="car-chip">${c}</span>`).join('')}</div>
+    </div>`).join('');
+
+  // Speakers
+  const spks = SPEAKERS[id] || [];
+  document.getElementById('t-spk').innerHTML = spks.length
+    ? spks.map(s => `
+      <div class="spk-card">
+        <div class="spk-top">
+          <div class="spk-av" style="background:${s.abg};color:${s.ac}">${s.ini}</div>
+          <div>
+            <div class="spk-name">${s.name}</div>
+            <div class="spk-title">${s.title}</div>
+            <span class="spk-spec">✦ ${s.spec}</span>
+          </div>
+        </div>
+        <div class="spk-bio">${s.bio}</div>
+        <div class="ctc-btns">
+          <a href="https://wa.me/${s.wa}" target="_blank" rel="noopener" class="ctc-btn ctc-wa">📱 WhatsApp</a>
+          <a href="mailto:${s.em}" class="ctc-btn ctc-em">✉️ Email</a>
+          <a href="${s.li}" target="_blank" rel="noopener" class="ctc-btn ctc-li">🔗 LinkedIn</a>
+          <a href="tel:${s.ph}" class="ctc-btn ctc-ph">📞 Call</a>
+        </div>
+      </div>`).join('')
+    : '<div class="no-spk">🎤<br><br>Speaker details will be added soon.</div>';
+
+  // Resources
+  document.getElementById('t-res').innerHTML = `
+    <div class="r-label">Official Documents</div>
+    <a href="${f.by}" target="_blank" rel="noopener" class="res-item">
+      <div class="r-ico" style="background:#FCEBEB">📄</div>
+      <div class="r-info"><div class="r-name">Faculty Bylaw 2024</div><div class="r-sub">PDF · Academic rules, credit system &amp; graduation requirements</div></div>
+      <span class="r-act" style="color:#E24B4A">Download</span>
+    </a>
+    <a href="${f.br}" target="_blank" rel="noopener" class="res-item">
+      <div class="r-ico" style="background:#E1F5EE">📋</div>
+      <div class="r-info"><div class="r-name">Student Guide &amp; Brochure</div><div class="r-sub">PDF · Programs, requirements &amp; student life</div></div>
+      <span class="r-act" style="color:#1D9E75">Download</span>
+    </a>
+    <div class="r-label">Official Pages</div>
+    <a href="${f.web}" target="_blank" rel="noopener" class="res-item">
+      <div class="r-ico" style="background:#E6F1FB">🌐</div>
+      <div class="r-info"><div class="r-name">Official Faculty Website</div><div class="r-sub">${f.web}</div></div>
+      <span class="r-act" style="color:#185FA5">Visit →</span>
+    </a>
+    <a href="${f.fb}" target="_blank" rel="noopener" class="res-item">
+      <div class="r-ico" style="background:#eef0fb">📘</div>
+      <div class="r-info"><div class="r-name">Facebook Official Page</div><div class="r-sub">News, events &amp; student community</div></div>
+      <span class="r-act" style="color:#1a4d8f">Open →</span>
+    </a>
+    <div class="r-label">Past Event Presentations</div>
+    ${f.yt.map(v=>`
+    <a href="${v.u}" target="_blank" rel="noopener" class="yt-item">
+      <div class="yt-thumb"><div class="yt-btn"><div class="yt-tri"></div></div></div>
+      <div><div class="yt-title">${v.t}</div><div class="yt-meta">${v.m}</div></div>
+    </a>`).join('')}`;
+
+  switchTab('ov', document.querySelector('.p-tab'));
+  document.getElementById('overlay').classList.add('on');
+  document.getElementById('panel').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePanel() {
+  document.getElementById('overlay').classList.remove('on');
+  document.getElementById('panel').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function switchTab(t, btn) {
+  document.querySelectorAll('.p-sec').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.p-tab').forEach(b => b.classList.remove('on'));
+  document.getElementById('t-' + t).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+// ════════════════════════════════════════════════
+// ANNOUNCEMENT
+// ════════════════════════════════════════════════
+function dismissBanner() {
+  document.getElementById('ann-banner').classList.add('gone');
+  document.querySelector('header').style.top = '0';
+}
+
+// ════════════════════════════════════════════════
+// SCROLL SPY — BOTTOM NAV ACTIVE STATE
+// ════════════════════════════════════════════════
+function scrollSpy() {
+  const secs = ['home','agenda','faculties','info'];
+  let cur = 'home';
+  secs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 100) cur = id;
+  });
+  document.querySelectorAll('.b-item').forEach(n => n.classList.toggle('on', n.dataset.s === cur));
+  document.querySelectorAll('#dnav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+}
+
+// ════════════════════════════════════════════════
+// FADE-IN ON SCROLL
+// ════════════════════════════════════════════════
+let io;
+function initFade() {
+  io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+}
+
+// ════════════════════════════════════════════════
+// KEYBOARD — CLOSE PANEL ON ESCAPE
+// ════════════════════════════════════════════════
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+window.addEventListener('scroll', scrollSpy, { passive: true });
+
+// ════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderAgenda(1);
+  renderGrid();
+  setTimeout(initFade, 80);
+  scrollSpy();
+});
+</script>
+</body>
+</html>
